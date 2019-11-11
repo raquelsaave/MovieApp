@@ -1,18 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { MovieService } from "../services/movie-service"
 
 class GenreMenu extends React.Component {
     constructor() {
         super()
 
     }
-
-    // getGenres() {
-        
-    // }
     render() {
         return(
-            <div>Hola</div>
+           <div> 
+               <h2>Movie Genres</h2>
+               <MovieService />
+            </div>
+           
         );
     }
 
