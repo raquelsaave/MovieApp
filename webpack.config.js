@@ -22,7 +22,7 @@ var DIST_DIR = path.resolve(__dirname, "dist");
 var SRC_DIR = path.resolve(__dirname, "src");
 
 var config = {
-	entry: SRC_DIR + "/js/components/genre-menu-component.js",
+	entry: SRC_DIR + "/js/App.js",
 	output: {
 		path: DIST_DIR + "/app",
 		filename: "bundle.js",

@@ -1,21 +1,23 @@
 import React from "react";
-import ReactDOM from "react-dom";
+
 import MovieService from "../services/movie-service"
 
-class GenreMenu extends React.Component {
+class MovieList extends React.Component {
     constructor(props) {
         super(props);
         this.movieService = new MovieService;
         this.state = {
-            data: []
+            data: [],
+            genreId: 10749
         }
 
     }
 
     componentDidMount() {
-        this.movieService.getGenres()
+        this.movieService.getMoviesbyGenre(this.state.genreId)
             .then((response) => {
-                let array = response.genres
+                console.log(response.results)
+                let array = response.results
                 let data = [];
                 for (let i = 0; i < array.length; i++) {
                     data.push(array[i]);
@@ -27,11 +29,11 @@ class GenreMenu extends React.Component {
 
     render() {
         let itemList = this.state.data.map((movie) => {
-        return <li key={movie.id}>{movie.id} - {movie.name}</li>;
+            return <li key={movie.id}>{movie.title}</li>;
         });
         return (
             <div>
-                <h2>Movie Genres</h2>
+                <h2>Movie List by Genre</h2>
                 <ul>
                     {itemList}
                 </ul>
@@ -42,5 +44,5 @@ class GenreMenu extends React.Component {
 
 }
 
-export default GenreMenu;
-// ReactDOM.render(<GenreMenu />, window.document.getElementById("root"))
+export default MovieList;
+// ReactDOM.render(<MovieList />, window.document.getElementById("root"))
